@@ -3,7 +3,7 @@ A tool for finding and pages that contain words or phrases in the DOM.
 
 ## Overview
 
-seekr is a tool for finding and pages that contain words or phrases in the DOM. 
+seekr is a tool for finding and pages that contain words or phrases in the DOM.
 It is a command line tool that takes a list of words or phrases in a file, and
 traverses pages in search of those terms in the DOM. There is a feature that
 will expand each word in the list to its additions, subtractions, substitutions,
@@ -15,7 +15,10 @@ search. It can be easily modified to search other sources.
 
 ## Requirements
 
-seekr requires node.js and npm.
+seekr requires:
+- [node.js](https://nodejs.org/)
+- [npm](https://www.npmjs.com/)
+- [typescript](https://www.typescriptlang.org/)
 
 ## Installation
 
@@ -25,10 +28,23 @@ npm install seekr
 
 ## Usage
 
-```bash
-npm run exec -- seek -d -e
+Create a file with a list of words or phrases to search for. For example, `dictionary.txt`:
+
+```text
+cabbage
+lettuce
 ```
 
-## TODO
-- [ ] Add other sources of pages to search
-- [ ] Add tests
+Create a file with a list of domains that are crawlable. For example, `interesting_dmains.txt`:
+
+```text
+google.com
+wikipedia.org
+```
+
+Links in the `interesting_domains.txt` file should be in the format `domain.com` or `subdomain.domain.com`.
+Any links found in the crawl that are in the `interesting_domains.txt` file will be searched as well.
+
+```bash
+npm run cli seek
+```

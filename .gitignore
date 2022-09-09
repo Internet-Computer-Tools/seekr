@@ -1,5 +1,11 @@
-# This is the default file for the words to search for
+# This is the default file for the words to search for.
+# It's not included because everyone has a custom list to search for.
 dictionary.txt
+
+# This is the default file for the domains to crawl from
+# links that are discovered. It's not included because everyone
+# will have their own domains.
+interesting_domains.txt
 
 # Logs
 logs
@@ -42,6 +48,12 @@ build/Release
 
 # Dependency directories
 node_modules/
+/node_modules/
+
+/build/
+/lib/
+/dist/
+/docs/
 jspm_packages/
 
 # TypeScript v1 declaration files
@@ -106,5 +118,7 @@ dist
 # TernJS port file
 .tern-port
 
-# JetBrains files 
-.idea/
+# JetBrains files
+.idea/*
+
+.DS_Store
