@@ -89,17 +89,16 @@ export class Crawler {
     })
   }
 
-  private analyzeLinks(links: string[]) {
-    links.forEach((link: string) => {
-      const crawlableLink = new CrawlableLink(link)
+  private isValidLink(link: CrawlableLink) {
+    return link.isCrawlable &&
+      this.interestingDomains.has(link.hostname)
+  }
 
-      if (
-        crawlableLink.isCrawlable &&
-        this.interestingDomains.has(crawlableLink.hostname)
-      ) {
-        this.enqueueCrawl(crawlableLink.crawlableUrl)
-      }
-    })
+  private analyzeLinks(links: string[]) {
+    links.map((link: string) => new CrawlableLink(link))
+    .filter(this.isValidLink)
+    .map((link: CrawlableLink) => link.crawlableUrl)
+    .forEach(this.enqueueCrawl)
   }
 
   /**
